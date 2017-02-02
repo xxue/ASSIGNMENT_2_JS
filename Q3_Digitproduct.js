@@ -1,4 +1,4 @@
-// A digit product sequence, Implement it iteratively, recursively
+//iteratively
 function digitProduct (n) {
     if (n < 1) { return "Not a positive integer";}
     if (n === 1) {
@@ -22,3 +22,22 @@ function digitProduct (n) {
   }
 digitProduct(5)
 // 1,2,4,8,16,22,26,38,62,74,102,102
+
+//recursively
+function digitProduct (n) {
+    if (n < 1) { return "Not a positive integer";}
+    if (n > 10) {return 102;}
+    if (n === 1) {return 1;}
+    else {
+      var result = 1;
+      for (let i = 1; i < n; i++) {
+        if (result < 10) {
+        result += result;
+        } else {
+        result += (result % 10) * Math.floor(result / 10); //16
+        }
+      }
+    }
+      return digitProduct(n-1); //pass n
+}
+digitProduct(13)
